@@ -53,9 +53,13 @@ class TagManager implements Renderable
             }
         }
 
+        if ($SEOData->image) {
+            $SEOData->image = str_replace(' ', '%20', $SEOData->image);
+        }
+        
         if ($SEOData->image && filter_var($SEOData->image, FILTER_VALIDATE_URL) === false) {
             $SEOData->imageMeta();
-
+        
             $SEOData->image = secure_url($SEOData->image);
         }
 
